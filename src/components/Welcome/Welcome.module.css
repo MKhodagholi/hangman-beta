@@ -1,0 +1,34 @@
+.welcome {
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  font-family: "B Baran";
+}
+
+.welcome img {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .welcome img {
+    width: 40%;
+    display: block;
+  }
+  .welcome {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .about {
+    width: 47%;
+  }
+}
