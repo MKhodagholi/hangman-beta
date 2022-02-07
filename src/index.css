@@ -5,6 +5,11 @@
   --secondary: #108cf8;
 }
 
+@font-face {
+  font-family: "Tabassom";
+  src: url("./asset/Fonts/Far.Tabssom.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
