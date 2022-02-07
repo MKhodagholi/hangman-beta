@@ -15,7 +15,10 @@ const Welcome = () => {
         اتمام برسد، البته می‌توان به تعداد مراحل افزود، که برای سطوح ساده‌تر
         است، اما نُرم بازی، شش مرحله‌ای است.
       </div>
-      <img src={require("../../asset/img/3269914.png")} alt="" />
+      <img
+        src={require("../../asset/img/hangman-welcome.png")}
+        alt="hangman-welcome"
+      />
     </div>
   );
 };
