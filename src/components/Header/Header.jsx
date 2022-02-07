@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import classes from "./Header.module.css";
 
@@ -7,14 +8,14 @@ const Header = () => {
     <header>
       <ul>
         <li className={classes["hangman-icon"]}>
-          <a href="#">هنگمن</a>
+          <Link to="/">هنگمن</Link>
         </li>
         <div className={classes.register}>
           <li>
-            <a href="#singin">ورود</a>
+            <Link to="/login">ورود</Link>
           </li>
           <li>
-            <a href="#singup">ثبت نام</a>
+            <Link to="/register">ثبت نام</Link>
           </li>
         </div>
       </ul>
