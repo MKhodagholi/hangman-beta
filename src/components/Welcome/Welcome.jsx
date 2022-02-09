@@ -1,10 +1,19 @@
 import React from "react";
 
 import classes from "./Welcome.module.css";
+//Aniamtion
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animation";
 
 const Welcome = () => {
   return (
-    <div className={classes.welcome}>
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className={classes.welcome}
+    >
       <div className={classes.about}>
         نوعی بازی حدس زدنی و قلم‌کاغذی است که دو نفر یا بیشتر بازی می‌کنند و به
         عنوان بازی آموزشی برای زبان آموزان نیز کاربرد دارد. در این بازی، یکی از
@@ -19,7 +28,7 @@ const Welcome = () => {
         src={require("../../asset/img/hangman-welcome.png")}
         alt="hangman-welcome"
       />
-    </div>
+    </motion.div>
   );
 };
 

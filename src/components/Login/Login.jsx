@@ -1,10 +1,19 @@
 import React from "react";
 
 import classes from "./Login.module.css";
+//Animation
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animation";
 
 const Login = () => {
   return (
-    <div className={classes.login}>
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className={classes.login}
+    >
       <form action="">
         <div className={classes.inputs}>
           <input type="text" />
@@ -16,7 +25,7 @@ const Login = () => {
         </div>
         <button>ورود</button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

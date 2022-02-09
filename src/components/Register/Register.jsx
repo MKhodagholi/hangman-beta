@@ -1,10 +1,19 @@
 import React from "react";
 
 import classes from "./Register.module.css";
+//Animation
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animation";
 
 const Register = () => {
   return (
-    <div className={classes.register}>
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      className={classes.register}
+    >
       <form action="">
         <div className={classes.inputs}>
           <input type="text" />
@@ -16,7 +25,7 @@ const Register = () => {
         </div>
         <button>ایجاد</button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 
