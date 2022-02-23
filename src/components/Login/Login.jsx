@@ -18,10 +18,12 @@ const Login = () => {
         <div className={classes.inputs}>
           <input type="text" />
           <label htmlFor="username">نام کاربری</label>
+          <span className={classes.border}></span>
         </div>
         <div className={classes.inputs}>
           <input type="password" />
           <label htmlFor="password">پسورد</label>
+          <span className={classes.border}></span>
         </div>
         <button>ورود</button>
       </form>
