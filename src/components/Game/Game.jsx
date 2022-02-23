@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import classes from "./Game.module.css";
 
@@ -61,10 +61,82 @@ const shapes = (
 );
 
 const Game = () => {
+  const [useWords, setUseWords] = useState([]);
+  const [wrongs, setWrongs] = useState([]);
+  const words = ["اسون", "سخت", "خیلی سخت", "راحت تر"];
+  const [notFarsi, setNotFarsi] = useState(false);
+  const [currentWord, setCurrentWord] = useState(
+    words[Math.floor(Math.random() * words.length)].split("")
+  );
+  const [wordsDOM, setWordsDOM] = useState(
+    <>
+      {currentWord.map(() => (
+        <div className={classes.letter}></div>
+      ))}
+    </>
+  );
+
+  const persianLetter = [
+    "آ",
+    "ا",
+    "ب",
+    "پ",
+    "ت",
+    "ث",
+    "ج",
+    "چ",
+    "ح",
+    "خ",
+    "د",
+    "ذ",
+    "ر",
+    "ز",
+    "س",
+    "ش",
+    "ط",
+    "ظ",
+    "ع",
+    "غ",
+    "ف",
+    "ق",
+    "ل",
+    "م",
+    "ن",
+    "و",
+    "ه",
+    "ی",
+  ];
+
+  const keyDownHandler = (e) => {
+    const inputChar = e.key;
+    let flag = true;
+    persianLetter.forEach((letter) => {
+      let newWordDOM = "";
+      if (inputChar === letter) {
+        currentWord.forEach((letter) => {
+          if (inputChar === letter) {
+            newWordDOM += `<div className=${classes.letter}>${letter}</div>`;
+          }
+        });
+        flag = false;
+      } else {
+        newWordDOM += `<div className=${classes.letter}></div>`;
+      }
+      setWordsDOM(newWordDOM);
+    });
+    if (flag) {
+      setNotFarsi(true);
+      setTimeout(() => setNotFarsi(false), 2000);
+    }
+    // if (e.key !== "")
+  };
+
   return (
     <div className={classes.game} tabIndex={1} onKeyDown={keyDownHandler}>
       {shapes}
-      <div className={classes.word} id="word"></div>
+      <div className={classes.word} id="word">
+        {wordsDOM}
+      </div>
 
       <div
         className={classes["wrong-letters-container"]}
