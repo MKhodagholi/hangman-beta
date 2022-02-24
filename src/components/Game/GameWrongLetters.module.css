@@ -5,6 +5,7 @@
   right: 20%;
   top: 40%;
   transform: translate(-20%, -40%);
+  transition: all 0.5s ease;
 }
 
 .wrong-letters-container p {
@@ -22,6 +23,11 @@
   font-size: 1.5rem;
   text-align: center;
   font-family: "Tabassom";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 150px;
 }
 
 @media screen and (max-width: 700px) {
