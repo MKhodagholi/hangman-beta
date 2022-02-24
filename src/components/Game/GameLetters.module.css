@@ -1,0 +1,16 @@
+.word {
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translate(-50%, -15%);
+  display: flex;
+}
+
+.letter {
+  font-size: 1.5rem;
+  width: 1rem;
+  margin: 0 5px;
+  border-bottom: 2px solid var(--secondary);
+  text-align: center;
+  /* user-select: none; */
+}

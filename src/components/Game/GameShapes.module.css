@@ -1,0 +1,19 @@
+.fiqure-container {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  transform: translate(-40%, -30%);
+  fill: transparent;
+  stroke: var(--white);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  transition: stroke 0.5s ease;
+}
+
+.fiqure-part {
+  stroke: initial;
+}
+
+.fiqure-part.show {
+  stroke: var(--white);
+}

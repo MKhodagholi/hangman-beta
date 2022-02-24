@@ -1,0 +1,12 @@
+.game {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: none;
+  direction: rtl;
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  outline: none;
+}
