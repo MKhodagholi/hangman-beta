@@ -10,8 +10,10 @@ const GameWrongLetters = ({ wrongLetters }) => {
     >
       <p>حروف اشتباه</p>
       <div className={classes["wrong-letters"]} id="wrong-letters">
-        {wrongLetters.map((letter) => (
-          <div className={classes["wrong-letters"]}>{letter}</div>
+        {wrongLetters.map((letter, index) => (
+          <div className={classes["wrong-letters"]} key={index}>
+            {letter}
+          </div>
         ))}
       </div>
     </div>
