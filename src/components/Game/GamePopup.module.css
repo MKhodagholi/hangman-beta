@@ -5,21 +5,30 @@
   right: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  /* display: flex; */
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  z-index: -3;
+  transition: all 0.7s ease;
 }
 
 .popup-container.show {
-  display: flex;
+  opacity: 1;
+  z-index: 2;
+}
+
+.popup-container.show .popup {
+  opacity: 1;
 }
 
 .popup {
   background-color: var(--secondary);
   border-radius: 10px;
   width: 300px;
+  opacity: 0;
+  transition: all 0.7s ease;
 }
 
 .popup h2 {
