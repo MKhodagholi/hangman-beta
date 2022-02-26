@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import classes from "./GamePage.module.css";
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../animation";
 
 import GameShapes from "../../components/Game/GameShapes";
 import GameLetters from "../../components/Game/GameLetters";
@@ -16,7 +18,7 @@ const Game = () => {
     words[Math.floor(Math.random() * words.length)]
   );
   const [notifInfo, setNotifInfo] = useState({
-    show: false,
+    show: null,
     message: "",
   });
   const [gameIsOver, setGameIsOver] = useState(false);
@@ -93,7 +95,15 @@ const Game = () => {
   };
 
   return (
-    <div className={classes.game} tabIndex={1} onKeyDown={keyDownHandler}>
+    <motion.div
+      className={classes.game}
+      tabIndex={1}
+      onKeyDown={keyDownHandler}
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
       <GameShapes />
       <GameLetters
         selectedWord={selectedWord}
@@ -102,7 +112,7 @@ const Game = () => {
       <GameWrongLetters wrongLetters={wrongLetters} />
       <GamePopup popupInfo={popupInfo} nextStepHandler={nextStepHandler} />
       <GameNotif isShow={notifInfo.show} message={notifInfo.message} />
-    </div>
+    </motion.div>
   );
 };
 

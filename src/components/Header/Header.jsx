@@ -17,6 +17,9 @@ const Header = () => {
           <li>
             <Link to="/register">ثبت نام</Link>
           </li>
+          <li>
+            <Link to="/game">دمو</Link>
+          </li>
         </div>
       </ul>
     </header>
