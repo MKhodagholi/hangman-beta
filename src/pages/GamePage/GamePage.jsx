@@ -15,27 +15,25 @@ const Game = () => {
   const [selectedWord, setSelectedWord] = useState(
     words[Math.floor(Math.random() * words.length)]
   );
-  const araryEmpty = selectedWord.split("").map(() => "");
-  const [wordDOM, setWordDOM] = useState(araryEmpty);
   const [notifInfo, setNotifInfo] = useState({
     show: false,
     message: "",
   });
   const [gameIsOver, setGameIsOver] = useState(false);
-  const nextStepHandler = () => {
-    setSelectedWord((prev) => words[Math.floor(Math.random() * words.length)]);
-    setWordDOM(araryEmpty);
-    setCorrectLetters([]);
-    setWrongLetters([]);
-    setGameIsOver(false);
-    setPopupInfo((prev) => ({ ...prev, show: false }));
-  };
+
   const [popupInfo, setPopupInfo] = useState({
     show: false,
     message: "",
     word: "",
     btnMessage: "",
   });
+  const nextStepHandler = () => {
+    setSelectedWord(words[Math.floor(Math.random() * words.length)]);
+    setCorrectLetters([]);
+    setWrongLetters([]);
+    setGameIsOver(false);
+    setPopupInfo((prev) => ({ ...prev, show: false }));
+  };
   const persianLetter = "آابپتثجچحخدذرزسشطظصضکگعغفقلمنوهی";
 
   const showNotif = (message) => {
@@ -59,12 +57,15 @@ const Game = () => {
     });
   };
 
-  const gameOver = (selectedWord, correctWord, wrongWord) => {
+  const gameOver = (selectedWord, correctArray, wrongArray) => {
+    let correctWord = "";
+    selectedWord.split("").map((letter) => {
+      correctWord += correctArray.includes(letter) ? letter : "";
+    });
     if (selectedWord === correctWord) {
       playAgainHandler(false);
       setGameIsOver(true);
-    }
-    if (wrongWord.length === 5) {
+    } else if (wrongArray.length === 5) {
       playAgainHandler(true);
       setGameIsOver(true);
     }
@@ -76,21 +77,15 @@ const Game = () => {
     if (persianLetter.includes(inputChar)) {
       if (selectedWord.includes(inputChar)) {
         if (!correctLetters.includes(inputChar)) {
-          correctLetters.push(inputChar);
-          const word = selectedWord
-            .split("")
-            .map((letter) => (correctLetters.includes(letter) ? letter : ""));
-          setWordDOM(word);
-          gameOver(
-            selectedWord,
-            correctLetters.join(""),
-            wrongLetters.join("")
-          );
+          const newArray = [...correctLetters];
+          newArray.push(inputChar);
+          setCorrectLetters(newArray);
+          gameOver(selectedWord, newArray.join(""), wrongLetters);
         } else showNotif("شما قبلا از این حرف استفاده کرده اید");
       } else if (!wrongLetters.includes(inputChar)) {
         setWrongLetters((prevState) => {
           const newArray = [...prevState, inputChar];
-          gameOver(selectedWord, correctLetters.join(""), newArray.join(""));
+          gameOver(selectedWord, correctLetters.join(""), newArray);
           return newArray;
         });
       } else showNotif("شما قبلا از این حرف استفاده کرده اید");
@@ -100,7 +95,10 @@ const Game = () => {
   return (
     <div className={classes.game} tabIndex={1} onKeyDown={keyDownHandler}>
       <GameShapes />
-      <GameLetters wordDOM={wordDOM} />
+      <GameLetters
+        selectedWord={selectedWord}
+        correctLetters={correctLetters}
+      />
       <GameWrongLetters wrongLetters={wrongLetters} />
       <GamePopup popupInfo={popupInfo} nextStepHandler={nextStepHandler} />
       <GameNotif isShow={notifInfo.show} message={notifInfo.message} />

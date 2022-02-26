@@ -2,12 +2,12 @@ import React from "react";
 
 import classes from "./GameLetters.module.css";
 
-const GameLetters = ({ wordDOM }) => {
+const GameLetters = ({ selectedWord, correctLetters }) => {
   return (
     <div className={classes.word} id="word">
-      {wordDOM.map((lett, index) => (
+      {selectedWord.split("").map((lett, index) => (
         <div className={classes.letter} key={index}>
-          {lett}
+          {correctLetters.includes(lett) ? lett : ""}
         </div>
       ))}
     </div>
