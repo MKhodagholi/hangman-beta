@@ -67,7 +67,7 @@ const Game = () => {
     if (selectedWord === correctWord) {
       playAgainHandler(false);
       setGameIsOver(true);
-    } else if (wrongArray.length === 5) {
+    } else if (wrongArray.length === 6) {
       playAgainHandler(true);
       setGameIsOver(true);
     }
@@ -104,7 +104,7 @@ const Game = () => {
       animate="show"
       exit="exit"
     >
-      <GameShapes />
+      <GameShapes wrongArray={wrongLetters} />
       <GameLetters
         selectedWord={selectedWord}
         correctLetters={correctLetters}
