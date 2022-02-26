@@ -7,13 +7,15 @@
   stroke: var(--white);
   stroke-width: 3px;
   stroke-linecap: round;
-  transition: stroke 0.5s ease;
 }
 
 .fiqure-part {
   stroke: initial;
+  transition: all 0.7s ease;
+  stroke: var(--white);
+  opacity: 0;
 }
 
 .fiqure-part.show {
-  stroke: var(--white);
+  opacity: 1;
 }

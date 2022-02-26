@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./GameShapes.module.css";
 
-const GameShapes = () => {
+const GameShapes = ({ wrongArray }) => {
   return (
     <svg height="250px" width="200px" className={classes["fiqure-container"]}>
       {/* <!-- root --> */}
@@ -12,7 +12,14 @@ const GameShapes = () => {
       <line x1="0" y1="240" x2="80" y2="240" />
 
       {/* <!-- head --> */}
-      <circle cx="120" cy="80" r="20" className={classes["fiqure-part"]} />
+      <circle
+        cx="120"
+        cy="80"
+        r="20"
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 1 ? classes.show : ""
+        }`}
+      />
 
       {/* <!-- body --> */}
       <line
@@ -20,7 +27,9 @@ const GameShapes = () => {
         y1="100"
         x2="120"
         y2="160"
-        className={classes["fiqure-part"]}
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 2 ? classes.show : ""
+        }`}
       />
 
       {/* <!-- left hand --> */}
@@ -29,7 +38,9 @@ const GameShapes = () => {
         y1="130"
         x2="140"
         y2="110"
-        className={classes["fiqure-part"]}
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 3 ? classes.show : ""
+        }`}
       />
 
       {/* <!-- right hand --> */}
@@ -38,7 +49,9 @@ const GameShapes = () => {
         y1="130"
         x2="100"
         y2="110"
-        className={classes["fiqure-part"]}
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 4 ? classes.show : ""
+        }`}
       />
 
       {/* <!-- right leg --> */}
@@ -47,7 +60,9 @@ const GameShapes = () => {
         y1="160"
         x2="140"
         y2="180"
-        className={classes["fiqure-part"]}
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 5 ? classes.show : ""
+        }`}
       />
 
       {/* <!-- left leg --> */}
@@ -56,7 +71,9 @@ const GameShapes = () => {
         y1="160"
         x2="100"
         y2="180"
-        className={classes["fiqure-part"]}
+        className={`${classes["fiqure-part"]} ${
+          wrongArray.length >= 6 ? classes.show : ""
+        }`}
       />
     </svg>
   );
